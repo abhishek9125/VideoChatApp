@@ -3,7 +3,20 @@ import { styled } from "@mui/system";
 import PendingInvitationsListItem from "./PendingInvitationsListItem";
 
 const DUMMY_INVITATIONS = [
-
+	{
+		_id: '1',
+		senderId: {
+			username: "Sweta",
+			mail: "dubmd@gmail.com"
+		},
+	},
+	{
+		_id: '2',
+		senderId: {
+			username: "Ishika",
+			mail: "fraud@gmail.com"
+		}
+	},
 ]
 
 
