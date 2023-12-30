@@ -4,19 +4,22 @@ import AuthBox from "../../shared/components/AuthBox";
 import RegisterPageInputs from "./RegisterPageInputs";
 import RegisterPageFooter from "./RegisterPageFooter";
 import { validateRegisterForm } from "../../shared/utils/validators";
+import { connect } from "react-redux";
+import { getActions } from "../../store/actions/authActions";
 import { useHistory } from "react-router-dom";
 
 const RegisterPage = ({ register }) => {
+
 	const history = useHistory();
 
-	const [mail, setMail] = useState("");
-	const [username, setUsername] = useState("");
-	const [password, setPassword] = useState("");
-
+	const [mail, setMail] = useState("abhi@gmail.com");
+	const [username, setUsername] = useState("abhi");
+	const [password, setPassword] = useState("abhishek");
 	const [isFormValid, setIsFormValid] = useState(false);
 
 	const handleRegister = () => {
-
+		const userDetails = { mail, password, username };
+		register(userDetails, history);
 	};
 
 	useEffect(() => {
@@ -50,4 +53,10 @@ const RegisterPage = ({ register }) => {
 	);
 };
 
-export default RegisterPage;
+const mapActionsToProps = (dispatch) => {
+	return {
+		...getActions(dispatch),
+	};
+};
+
+export default connect(null, mapActionsToProps)(RegisterPage);
