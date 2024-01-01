@@ -6,7 +6,7 @@ export const connectWithSocketServer = (userDetails) => {
 
     const jwtToken = userDetails.token;
 
-    socket = io('http://localhost:8000,',{
+    socket = io('http://localhost:8000',{
         auth: {
             token: jwtToken
         }
