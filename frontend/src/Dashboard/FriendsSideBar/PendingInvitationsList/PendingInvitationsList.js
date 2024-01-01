@@ -7,14 +7,14 @@ const DUMMY_INVITATIONS = [
 		_id: '1',
 		senderId: {
 			username: "Sweta",
-			mail: "dubmd@gmail.com"
+			mail: "sweta@gmail.com"
 		},
 	},
 	{
 		_id: '2',
 		senderId: {
-			username: "Ishika",
-			mail: "fraud@gmail.com"
+			username: "Raj",
+			mail: "raj@gmail.com"
 		}
 	},
 ]

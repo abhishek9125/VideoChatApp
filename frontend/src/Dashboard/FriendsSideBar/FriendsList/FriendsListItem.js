@@ -6,7 +6,6 @@ import OnlineIndicator from "./OnlineIndicator";
 
 
 const FriendsListItem = ({ id, username, isOnline, setChosenChatDetails }) => {
-	console.log('username', username)
 	const handleChooseActiveConversation = () => {
 	};
 
