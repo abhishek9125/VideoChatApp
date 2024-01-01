@@ -8,10 +8,20 @@ const MainContainer = styled("div")({
 	width: "100%",
 });
 
+const checkOnlineUsers = (friends = [], onlineUsers = []) => {
+	friends.forEach((f) => {
+		const isUserOnline = onlineUsers.find((user) => user.userId === f.id);
+		f.isOnline = isUserOnline ? true : false;
+	});
+
+	return friends;
+};
+
+
 const FriendsList = ({ friends, onlineUsers }) => {
 	return (
 		<MainContainer>
-			{friends.map((f) => (
+			{checkOnlineUsers(friends, onlineUsers).map((f) => (
 				<FriendsListItem
 					username={f.username}
 					id={f.id}
@@ -25,9 +35,8 @@ const FriendsList = ({ friends, onlineUsers }) => {
 
 const mapStoreStateToProps = ({ friends }) => {
 	return {
-	  ...friends,
+		...friends,
 	};
-  };
-  
-  export default connect(mapStoreStateToProps)(FriendsList);
-  
+};
+
+export default connect(mapStoreStateToProps)(FriendsList);
