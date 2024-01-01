@@ -3,6 +3,8 @@ const http = require("http");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
+const friendInvitationRoutes = require("./routes/friendInvitationRoutes");
+
 require("dotenv").config();
 
 const sockerServer = require('./socketServer');
@@ -13,6 +15,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/auth", authRoutes);
+app.use("/api/friend-invitation", friendInvitationRoutes);
 
 const server = http.createServer(app);
 sockerServer.registerSocketServer(server);
