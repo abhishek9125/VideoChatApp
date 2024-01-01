@@ -10,6 +10,7 @@ const newConnectionHandler = async (socket, io) => {
     });
 
     friendsUpdate.updateFriendsPendingInvitations(userDetails.userId);
+    friendsUpdate.updateFriends(userDetails.userId);
 
 };
 
