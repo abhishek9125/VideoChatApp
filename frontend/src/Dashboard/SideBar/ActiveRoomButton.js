@@ -12,7 +12,7 @@ const ActiveRoomButton = ({
 }) => {
 	const handleJoinActiveRoom = () => {
 		if (amountOfParticipants < 4) {
-			// roomHandler.joinRoom(roomId);
+			roomHandler.joinRoom(roomId);
 		}
 	};
 
