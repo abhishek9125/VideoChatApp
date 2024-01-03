@@ -1,7 +1,8 @@
+import { roomActions } from "../actions/roomActions";
 
 const initState = {
     isUserInRoom: false,
-    isUserRoomCreater: false,
+    isUserRoomCreator: false,
     roomDetails: null,
     activeRooms: [],
     localStream: null,
