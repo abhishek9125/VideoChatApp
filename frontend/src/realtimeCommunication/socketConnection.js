@@ -8,7 +8,7 @@ export const connectWithSocketServer = (userDetails) => {
 
     const jwtToken = userDetails.token;
 
-    socket = io('http://localhost:8000',{
+    socket = io('http://localhost:8000', {
         auth: {
             token: jwtToken
         }
@@ -30,7 +30,18 @@ export const connectWithSocketServer = (userDetails) => {
 
     socket.on('online-users', (data) => {
         const { onlineUsers } = data;
-        console.log('onlineUsers', onlineUsers)
         store.dispatch(setOnlineUsers(onlineUsers));
     })
+
+    socket.on("direct-chat-history", (data) => {
+        // updateDirectChatHistoryIfActive(data);
+    });
 }
+
+export const sendDirectMessage = (data) => {
+    socket.emit("direct-message", data);
+};
+
+export const getDirectChatHistory = (data) => {
+    socket.emit("direct-chat-history", data);
+};
