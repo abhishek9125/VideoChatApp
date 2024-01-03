@@ -12,11 +12,12 @@ const AvatarPreview = styled("div")({
 	fontSize: "20px",
 	fontWeight: "700",
 	color: "white",
+	textTransform: "capitalize"
 });
 
 const Avatar = ({ username, large }) => {
 	return (
-		<AvatarPreview style={large ? { height: "80px", width: "80px" } : {}}>
+		<AvatarPreview style={large ? { height: "80px", width: "80px", fontSize: "32px" } : {}}>
 			{username.substring(0, 2)}
 		</AvatarPreview>
 	);
