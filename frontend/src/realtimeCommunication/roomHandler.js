@@ -1,10 +1,20 @@
 import store from "../store/store"
-import { setActiveRooms, setOpenRoom, setRoomDetails } from "../store/actions/roomActions";
+import { setActiveRooms, setIsUserJoinedOnlyWithAudio, setOpenRoom, setRoomDetails } from "../store/actions/roomActions";
 import * as socketConnection from "./socketConnection";
+import * as webRTCHandler from "./webRTCHandler";
 
 export const createNewRoom = () => {
-    store.dispatch(setOpenRoom(true, true));
-    socketConnection.createNewRoom();
+    const successCalbackFunc = () => {
+        store.dispatch(setOpenRoom(true, true));
+
+        const audioOnly = store.getState().room.audioOnly;
+        store.dispatch(setIsUserJoinedOnlyWithAudio(audioOnly));
+        socketConnection.createNewRoom();
+    };
+
+    // const audioOnly = store.getState().room.audioOnly;
+    const audioOnly = true;
+    webRTCHandler.getLocalStreamPreview(audioOnly, successCalbackFunc);
 }
 
 export const newRoomCreated = (data) => {
