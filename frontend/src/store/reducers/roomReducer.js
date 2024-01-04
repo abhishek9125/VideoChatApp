@@ -7,7 +7,7 @@ const initState = {
     activeRooms: [],
     localStream: null,
     remoteStreams: [],
-    audioOnly: false,
+    audioOnly: true,
     screenSharingStream: null,
     isScreenSharingActive: false,
     isUserJoinedWithOnlyAudio: false,
