@@ -1,5 +1,5 @@
 import store from "../store/store"
-import { setActiveRooms, setIsUserJoinedOnlyWithAudio, setLocalStream, setOpenRoom, setRoomDetails } from "../store/actions/roomActions";
+import { setActiveRooms, setIsUserJoinedOnlyWithAudio, setLocalStream, setOpenRoom, setRemoteStreams, setRoomDetails } from "../store/actions/roomActions";
 import * as socketConnection from "./socketConnection";
 import * as webRTCHandler from "./webRTCHandler";
 
@@ -66,6 +66,7 @@ export const leaveRoom = () => {
         store.dispatch(setLocalStream(null));
     }
 
+    store.dispatch(setRemoteStreams([]));
     webRTCHandler.closeAllConnections();
 
     socketConnection.leaveRoom({ roomId });
