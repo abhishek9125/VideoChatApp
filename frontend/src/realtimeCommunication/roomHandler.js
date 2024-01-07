@@ -1,5 +1,5 @@
 import store from "../store/store"
-import { setActiveRooms, setIsUserJoinedOnlyWithAudio, setLocalStream, setOpenRoom, setRemoteStreams, setRoomDetails } from "../store/actions/roomActions";
+import { setActiveRooms, setIsUserJoinedOnlyWithAudio, setLocalStream, setOpenRoom, setRemoteStreams, setRoomDetails, setScreenSharingStream } from "../store/actions/roomActions";
 import * as socketConnection from "./socketConnection";
 import * as webRTCHandler from "./webRTCHandler";
 
@@ -64,6 +64,12 @@ export const leaveRoom = () => {
     if (localStream) {
         localStream.getTracks().forEach((track) => track.stop());
         store.dispatch(setLocalStream(null));
+    }
+
+    const screenSharingStream = store.getState().room.screenSharingStream;
+    if (screenSharingStream) {
+      screenSharingStream.getTracks().forEach((track) => track.stop());
+      store.dispatch(setScreenSharingStream(null));
     }
 
     store.dispatch(setRemoteStreams([]));
